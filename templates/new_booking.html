@@ -1,0 +1,34 @@
+{% include 'top.html' %}
+
+<div class="content">
+    <div class="container">
+        <h1 class="title" align="center">New Booking</h1>
+
+        <form class="newbooking pure-form pure-form-aligned" method="POST" action="{{url_for('new_booking')}}">
+            <div class="pure-control-group">
+                <label for="customer">Customer Email:</label>
+                <input type="text" name="customer" autofocus required>
+            </div>
+			<div class="pure-control-group">
+                <label for="performance">Performance:</label>
+                <input type="text" name="performance" required>
+            </div>
+            <div class="pure-control-group">
+                <label for="performance_date">Performance Date: </label>
+                <input type="date" name="performance_date" required>
+            </div>
+            <div class="pure-control-group">
+                <label for="booked_by">Booking Agent:</label>
+                <input type="text" name="booked_by" required>
+            </div>
+            <div class="pure-control-group">
+                <label for="instruction">Booking Instruction: </label>
+                <textarea name="instruction" rows="5" cols="30"></textarea>
+                
+            </div>
+            <button type="submit" class="flat">Add Booking</button>
+        </form>
+    </div>
+</div>
+
+{% include 'bottom.html' %}

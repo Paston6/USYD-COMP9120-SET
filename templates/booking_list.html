@@ -1,0 +1,53 @@
+{% include 'top.html' %}
+
+<div class="content">
+    <div class="container">
+        <h1 class="title" align="center">Performance Booking List</h1>
+        <div class="search">
+            <form class="search-top" method="POST" action="{{url_for('list_booking')}}">
+                <input type="text" name="search" placeholder="Search Booking" autofocus>
+                <button class="flat" type="submit">Find</button>
+                <div class="clear"></div>
+            </form>
+        </div>
+        <table class="styled">
+            <thead>
+                <tr>
+				    <th>Booking No</th>
+                    <th>Customer</th>
+                    <th>Performance</th>
+                    <th>Performance Date</th>
+                    <th>Booking Agent</th>
+                    <th>Booking Instruction</th>
+                </tr>
+            </thead>
+            <tbody>
+                    {% for e in booking %}
+                    <tr class='clickable-row' data-href="{{url_for('update_booking', booking_no=e.booking_no)}}" method = GET>
+					    <td>{{ e.booking_no }}</td>
+                        <td>{{ e.customer_name }}</td>
+                        <td>{{ e.performance }}</td>
+                        <td>{{ e.performance_date }}</td>
+                        <td>{{ e.booked_by }}</td>
+                        <td>{{ e.instruction }}</td>
+                    </tr>
+                    {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+<script type="text/javascript" defer="defer"> jQuery(document).ready(function($) {
+    $(".clickable-row").click(function() {
+        window.location = $(this).data("href");
+    });
+	$(".clickable-row").mouseover(function() {
+        $(this).css('background-color', '#eeeeee');
+    });
+	$(".clickable-row").mouseout(function() {
+        $(this).css('background-color', 'white');
+    });
+
+});
+</script>
+
+{% include 'bottom.html' %}

@@ -1,0 +1,37 @@
+{% include 'top.html' %}
+
+<div class="content">
+    <div class="container">
+        <h1 class="title" align="center">Update Booking</h1>
+
+        <form class="newbooking pure-form pure-form-aligned" method="POST" action="{{url_for('update_booking')}}">
+			<div class="pure-control-group">
+                <label for="booking_no">Booking No:</label>
+                <input type="text" name="booking_no" value="{{ bookingInfo.booking_no }}" readonly required>
+            </div>
+            <div class="pure-control-group">
+                <label for="customer_name">Customer:</label>
+                <input type="text" name="customer_name" value= "{{ bookingInfo.customer_name }}" readonly required>
+            </div>
+			<div class="pure-control-group">
+                <label for="performance">Performance:</label>
+                <input type="text" name="performance" value="{{ bookingInfo.performance }}" autofocus required>
+			</div>
+            <div class="pure-control-group">
+                <label for="performance_date">Performance Date:</label>
+				<input type="date" name="performance_date" value="{{ bookingInfo.performance_date }}" required>
+            </div>
+            <div class="pure-control-group">
+                <label for="booked_by">Booked By:</label>
+                <input type="text" name="booked_by" value="{{ user.username }}" required>			
+			</div>
+			<div class="pure-control-group">
+                <label for="instruction">Booking Instruction:</label>
+				<textarea name="instruction" rows="5" cols="30" required>{{ bookingInfo.instruction }}</textarea>
+            </div>
+            <button type="submit" class="flat">Update Booking</button>
+        </form>
+    </div>
+</div>
+
+{% include 'bottom.html' %}
